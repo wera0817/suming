@@ -1,0 +1,35 @@
+server:
+  address: ${APP_HOST:127.0.0.1}
+  port: ${APP_PORT:18080}
+  error:
+    include-message: never
+    include-stacktrace: never
+  tomcat:
+    max-swallow-size: 12MB
+spring:
+  application:
+    name: guanxiang
+  datasource:
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:13306/guanxiang?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai}
+    username: ${DB_USER:guanxiang}
+    password: ${DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: 8
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+      file-size-threshold: 12MB
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+      accept-float-as-int: false
+  mvc:
+    async:
+      request-timeout: 180000
+app:
+  admin-user: ${ADMIN_USER:admin}
+  admin-password: ${ADMIN_PASSWORD:}
+  master-key: ${MASTER_KEY:}
+  allowed-origins: ${ALLOWED_ORIGINS:http://localhost:9099,http://127.0.0.1:9099,http://localhost:18080,http://127.0.0.1:18080}
+  secure-cookies: ${SECURE_COOKIES:false}
